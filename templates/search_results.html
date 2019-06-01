@@ -4,7 +4,10 @@
     <div class="starter-template text-left">
         <h1>Result</h1>
         {% for result in results%}
-        <p>{{ result.definition }}</p>
+        <ul class="list-group pt-4">
+            <li class="list-group-item">{{ result.definition }}</li>
+            <li class="list-group-item">{{ result.char_simp }}</li>
+          </ul>
         {% endfor %}
     </div>
 {% endblock %}
