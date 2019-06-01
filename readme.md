@@ -1,0 +1,1 @@
+Chinese dictionary app built with Flask

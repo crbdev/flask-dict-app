@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="starter-template text-left">
+        <h1>Result</h1>
+        {% for result in results%}
+        <p>{{ result.definition }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
