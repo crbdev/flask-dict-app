@@ -9,7 +9,7 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 #database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'char.sqlite')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'cedict.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 #init db
 db = SQLAlchemy(app)
@@ -19,7 +19,7 @@ ma = Marshmallow(app)
 #wa.whoost_index(app, post)
 
 #dict entry class/model
-class Chardb(db.Model):
+class Entries(db.Model):
     __searchable__ = ['pinyin', 'char_simp', 'char_trad']
 
     id = db.Column(db.Integer, primary_key=True)
@@ -52,7 +52,7 @@ def search_results():
 def search():
     query_parameters = request.args
     entry = query_parameters.get('query')
-    results = Chardb.query.filter_by(pinyin=entry)
+    results = Entries.query.filter_by(char_simp=entry)
     count = results.count()
     return render_template('search_results.html', results=results, count=count, entry=entry)
 
