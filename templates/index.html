@@ -1,11 +1,17 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <div class="starter-template text-center">
-        <h1>Welcome to MyApp</h1>
-        <p class="lead">Search for a term</p>
-        <form class="md-form active-pink active-pink-2 mb-3 mt-0" method="GET" action="search">
-             <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="query" id="query">
+    <div class="starter-template text-center justify-content-center">
+        <h1 class="pb-3">Welcome to My Mandarin Dictionary</h1>
+        <p class="lead pb-0 mb-0">Search for a term</p>
+    </div>
+    <div class="d-flex justify-content-center align-items-center container ">
+        <form class="md-form input-group w-75 pt-3" method="GET" action="search">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Search/查字典</span>
+             </div>
+            <input class="form-control" type="text" placeholder="你好" aria-label="Search" name="query" id="query">
         </form>
     </div>
+
 {% endblock %}

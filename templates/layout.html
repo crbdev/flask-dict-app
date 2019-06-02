@@ -6,10 +6,11 @@
         <title>MyApp</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom.css') }}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
     </head>
     <body class="d-flex flex-column h-100">
         {% include 'includes/_navbar.html' %}
-        <main role="main" class="container pt-5">
+        <main role="main" class="container pt-5 text-center">
             {% block body %}{% endblock %}
         </main>
         <footer class="footer mt-auto py-3">

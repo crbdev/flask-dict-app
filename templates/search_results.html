@@ -1,13 +1,28 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <div class="starter-template text-left">
-        <h1>Result</h1>
-        {% for result in results%}
-        <ul class="list-group pt-4">
-            <li class="list-group-item">{{ result.definition }}</li>
-            <li class="list-group-item">{{ result.char_simp }}</li>
-          </ul>
+    <div class="starter-template text-left container">
+        {% if count == 1 %}
+            <h2>There was {{ count }} result found for "{{ entry }}"</h2>
+        {% else %}
+            <h2>There were {{ count }} results found for "{{ entry }}"</h2>
+        {% endif %}
+        {% for result in results %}
+            <ul class="list-group pt-4">
+                <li class="list-group-item"><strong>Definition:</strong> {{ result.definition }}</li>
+                <li class="list-group-item"><strong>Chinese (simplified):</strong> {{ result.char_simp }}</li>
+                <li class="list-group-item"><strong>Chinese (traditional):</strong> {{ result.char_trad }}</li>
+                <li class="list-group-item"><strong>Pinyin:</strong> {{ result.pinyin }}</li>
+            </ul>
         {% endfor %}
+    </div>
+    <div class="container text-left pt-5">
+        <h3>Search again</h3>
+        <form class="md-form input-group w-50 pt-3 pb-5" method="GET" action="search">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Search/查字典</span>
+            </div>
+            <input class="form-control" type="text" placeholder="你好" aria-label="Search" name="query" id="query">
+        </form>
     </div>
 {% endblock %}

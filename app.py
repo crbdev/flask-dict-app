@@ -20,7 +20,7 @@ ma = Marshmallow(app)
 
 #dict entry class/model
 class Chardb(db.Model):
-    __searchable__ = ['pinyin']
+    __searchable__ = ['pinyin', 'char_simp', 'char_trad']
 
     id = db.Column(db.Integer, primary_key=True)
     char_simp = db.Column(db.String(200))
@@ -51,8 +51,10 @@ def search_results():
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     query_parameters = request.args
-    results = Chardb.query.filter_by(pinyin=query_parameters.get('query'))
-    return render_template('search_results.html', results=results)
+    entry = query_parameters.get('query')
+    results = Chardb.query.filter_by(pinyin=entry)
+    count = results.count()
+    return render_template('search_results.html', results=results, count=count, entry=entry)
 
 if __name__ =='__main__':
     app.run(debug=True)
