@@ -44,9 +44,7 @@ def about():
 
 @app.route('/search_results')
 def search_results():
-    results = Chardb.query.all()
-
-    return render_template('search_results.html', results=results)
+    return render_template('search_results.html')
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
@@ -54,7 +52,14 @@ def search():
     entry = query_parameters.get('query')
     results = Entries.query.filter_by(char_simp=entry)
     count = results.count()
-    return render_template('search_results.html', results=results, count=count, entry=entry)
+
+    # if result was found return it, else check traditional forms
+    if count > 0:
+        return render_template('search_results.html', results=results, count=count, entry=entry)
+    else:
+        results = Entries.query.filter_by(char_trad=entry)
+        count = results.count()
+        return render_template('search_results.html', results=results, count=count, entry=entry)
 
 if __name__ =='__main__':
     app.run(debug=True)

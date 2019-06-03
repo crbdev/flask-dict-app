@@ -12,6 +12,10 @@
         {% include 'includes/_navbar.html' %}
         <main role="main" class="container pt-10 text-center">
             {% block body %}{% endblock %}
+            <div class="pt-4 pb-4">
+                <h4>Help keep us going/捐款</h4>
+                {% include 'includes/_donate_button.html' %}
+            </div>
         </main>
         <footer class="footer mt-auto py-3">
             {% include 'includes/_footer.html' %}

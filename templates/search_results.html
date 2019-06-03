@@ -15,6 +15,12 @@
                 <li class="list-group-item"><strong>Pinyin:</strong> {{ result.pinyin }}</li>
             </ul>
         {% endfor %}
+        {% if entry|length == 1 %}
+            <div class="pt-4">
+                <h5>More info:</h5>
+                <p>Character etymology: <a href="https://hanziyuan.net/#{{ entry }}" target="_blank">view here</a></p>
+            </div>
+        {% endif %}
     </div>
     <div class="container text-left pt-5">
         <h3>Search again</h3>
